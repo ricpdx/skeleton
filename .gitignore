@@ -1,0 +1,9 @@
+# gradle
+**/out/
+**/build/
+
+# java
+*.class
+
+# intellij
+*.iws
