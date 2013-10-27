@@ -26,4 +26,6 @@ tasks.withType(Test) {
     }
 }
 
+integrationTest.useTestNG();
+
 check.dependsOn integrationTest

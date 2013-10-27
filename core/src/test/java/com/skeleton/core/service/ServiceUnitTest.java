@@ -26,10 +26,7 @@ public class ServiceUnitTest {
 
 	@Test
 	public void FakeTest() {
-		assertEquals(1, 2);
-		assertEquals(true, false);
-		Object x = null;
-		assertNotNull(x);
+		assertEquals(1, 1);
 		logger.info("ServiceUnitTest - running FakeTest");
 	}
 }

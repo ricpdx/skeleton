@@ -6,6 +6,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
@@ -26,10 +30,26 @@ public class ServiceIntegTest {
 
 	@Test
 	public void FakeTest() {
-		assertEquals(1, 2);
-		assertEquals(true, false);
-		Object x = null;
-		assertNotNull(x);
-		logger.info("ServiceIntegTest - running FakeTest");
+		logger.info("ServiceIntegTest - FakeTest begin");
+
+		logger.info("read and parse json file.");
+		Path path = Paths.get("core/build/resources/integrationTest/abc.json");
+		assertNotNull(path);
+		String dataString = readJsonFileToString(path);
+		assertNotNull(dataString);
+
+		logger.info("ServiceIntegTest - FakeTest end");
+	}
+
+	public static String readJsonFileToString(Path path) {
+		try {
+			byte[] bytes = Files.readAllBytes(path);
+			String data = new String(bytes);
+			return data.replace("\r", "").replace("\t", " ");
+		} catch (Throwable e) {
+			e.printStackTrace();
+			System.err.println(e.getMessage());
+			return null;
+		}
 	}
 }
