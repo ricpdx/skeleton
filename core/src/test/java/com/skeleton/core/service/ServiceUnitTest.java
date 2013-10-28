@@ -29,11 +29,11 @@ public class ServiceUnitTest {
 	}
 
 	@Test
-	public void FakeTest() {
-		logger.info("ServiceUnitTest - running FakeTest");
+	public void fakeTest() {
+		logger.info("ServiceUnitTest - running fakeTest");
 
-		Path path = Paths.get("core/build/resources/test/test.json");
-		assertNotNull(path);
+Path path = Paths.get("core/build/resources/test/test.json");
+assertNotNull(path);
 		String dataString = readJsonFileToString(path);
 		assertNotNull(dataString);
 	}
