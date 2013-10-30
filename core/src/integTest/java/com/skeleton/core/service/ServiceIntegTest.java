@@ -10,31 +10,29 @@ import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
-public class ServiceUnitTest {
+public class ServiceIntegTest {
 	Logger logger;
 
 	@BeforeClass
 	public void oneTimeSetup() {
-		logger = LoggerFactory.getLogger(ServiceUnitTest.class);
-		logger.info("ServiceUnitTest - oneTimeSetup");
+		logger = LoggerFactory.getLogger(ServiceIntegTest.class);
+		logger.info("ServiceIntegTest - oneTimeSetup");
 	}
 
 	@AfterClass
 	public void oneTimeTeardown() {
-		logger.info("ServiceUnitTest - oneTimeTeardown");
+		logger.info("ServiceIntegTest - oneTimeTeardown");
 		logger = null;
 	}
 
 	@Test
 	public void fakeTest() {
-		logger.info("ServiceUnitTest - running fakeTest");
+		logger.info("ServiceIntegTest - running fakeTest");
 
-//		Path path = Paths.get("core/build/resources/test/xyz.json");
+//		Path path = Paths.get("core/build/resources/test/abc.json");
 //		assertNotNull(path);
 //		String dataString = readJsonFileToString(path);
 //		assertNotNull(dataString);
@@ -42,14 +40,14 @@ public class ServiceUnitTest {
 		URL url = null;
 		InputStream stream = null;
 
-		url = getClass().getClassLoader().getResource("xyz.json");
+		url = getClass().getClassLoader().getResource("abc.json");
 		assertNotNull(url);
 		logger.info(String.format("getClass().getClassLoader().getResource: url=%s",url.toString()));
 
-//		url = getClass().getResource("xyz.json");
+//		url = getClass().getResource("abc.json");
 //		assertNotNull(url);
 
-		stream = Thread.currentThread().getContextClassLoader().getResourceAsStream("xyz.json");
+		stream = Thread.currentThread().getContextClassLoader().getResourceAsStream("abc.json");
 		assertNotNull(stream);
 		logger.info(String.format("Thread.currentThread().getContextClassLoader().getResourceAsStream: url=%s",url.toString()));
 	}
